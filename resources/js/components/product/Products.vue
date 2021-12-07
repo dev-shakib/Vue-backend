@@ -4,13 +4,13 @@
         <div class="row">
 
           <div class="col-12">
-        
+
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Product List</h3>
 
                 <div class="card-tools">
-                  
+
                   <button type="button" class="btn btn-sm btn-primary" @click="newModal">
                       <i class="fa fa-plus-square"></i>
                       Add New
@@ -40,7 +40,7 @@
                       <td>{{product.price}}</td>
                       <!-- <td><img v-bind:src="'/' + product.photo" width="100" alt="product"></td> -->
                       <td>
-                        
+
                         <a href="#" @click="editModal(product)">
                             <i class="fa fa-edit blue"></i>
                         </a>
@@ -77,6 +77,12 @@
                 <form @submit.prevent="editmode ? updateProduct() : createProduct()">
                     <div class="modal-body">
                         <div class="form-group">
+                            <label>Image</label>
+                            <input @change="handleImage" type="file" name="image"
+                                class="form-control" :class="{ 'is-invalid': form.errors.has('image') }">
+                            <has-error :form="form" field="image"></has-error>
+                        </div>
+                        <div class="form-group">
                             <label>Name</label>
                             <input v-model="form.name" type="text" name="name"
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
@@ -98,7 +104,7 @@
 
                             <label>Category</label>
                             <select class="form-control" v-model="form.category_id">
-                              <option 
+                              <option
                                   v-for="(cat,index) in categories" :key="index"
                                   :value="index"
                                   :selected="index == form.category_id">{{ cat }}</option>
@@ -142,6 +148,7 @@
                 products : {},
                 form: new Form({
                     id : '',
+                    image: '',
                     category : '',
                     name: '',
                     description: '',
@@ -152,7 +159,6 @@
                     photoUrl: '',
                 }),
                 categories: [],
-              
                 tag:  '',
                 autocompleteItems: [],
             }
@@ -162,7 +168,7 @@
           getResults(page = 1) {
 
               this.$Progress.start();
-              
+
               axios.get('api/product?page=' + page).then(({ data }) => (this.products = data.data));
 
               this.$Progress.finish();
@@ -225,6 +231,8 @@
                       title: 'Some error occured! Please try again'
                   });
               })
+
+
           },
           updateProduct(){
               this.$Progress.start();
@@ -272,10 +280,16 @@
                         }
                   })
           },
+          handleImage(event){
+              this.form.image = event.target.files[0];
+            //   this.form.image = 'hello';
+
+              console.log(this.form.image);
+          }
 
         },
         mounted() {
-            
+
         },
         created() {
             this.$Progress.start();

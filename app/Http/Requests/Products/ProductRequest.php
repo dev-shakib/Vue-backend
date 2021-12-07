@@ -42,7 +42,7 @@ class ProductRequest extends FormRequest
             'description' => 'required|string|max:1000',
             'price' => 'required|numeric',
             // 'tags' => 'required|array',
-            // 'photo' => 'sometimes|files',
+            'image' => 'sometimes',
         ];
     }
 
