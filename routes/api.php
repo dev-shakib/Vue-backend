@@ -43,3 +43,4 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
 
 // Public routes
 Route::get('/categories', 'App\Http\Controllers\FrontEndApiController@getCtegories');
+Route::get('/products', 'App\Http\Controllers\FrontEndApiController@getProducts');
