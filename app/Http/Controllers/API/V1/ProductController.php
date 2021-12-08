@@ -98,6 +98,13 @@ class ProductController extends BaseController
 
         $product->update($request->all());
 
+        if($request->image){
+            $imageName = time().".jpg";
+            $imagePath = "images/".$imageName;
+            \Image::make($request->image)->save(public_path($imagePath));
+            $product->update(['photo' => $imagePath]);
+        }
+
         // update pivot table
         $tag_ids = [];
         foreach ($request->get('tags') as $tag) {
