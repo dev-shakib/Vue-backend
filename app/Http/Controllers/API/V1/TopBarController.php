@@ -31,7 +31,7 @@ class TopBarController extends Controller
     {
         $categories = $this->topbar->latest()->paginate(10);
 
-        return $this->sendResponse($categories, 'topbar list');
+        return response($categories);
     }
 
     /**
@@ -43,7 +43,7 @@ class TopBarController extends Controller
     {
         $categories = $this->topbar->pluck('name', 'id');
 
-        return $this->sendResponse($categories, 'topbar list');
+        return $categories;
     }
 
 
@@ -60,10 +60,10 @@ class TopBarController extends Controller
     {
         $tag = $this->topbar->create([
             'name' => $request->get('name'),
-            'description' => $request->get('description'),
+            'slug' => $request->get('slug'),
         ]);
 
-        return $this->sendResponse($tag, 'topbar Created Successfully');
+        return response($tag);
     }
 
     /**
@@ -80,6 +80,6 @@ class TopBarController extends Controller
 
         $tag->update($request->all());
 
-        return $this->sendResponse($tag, 'topbar Information has been updated');
+        return $tag;
     }
 }

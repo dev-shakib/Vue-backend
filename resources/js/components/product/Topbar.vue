@@ -24,7 +24,7 @@
                     <tr>
                       <th>ID</th>
                       <th>Name</th>
-                      <th>Description</th>
+                      <th>Slug</th>
                       <th>Created</th>
                       <th>Action</th>
                     </tr>
@@ -34,7 +34,7 @@
 
                       <td>{{category.id}}</td>
                       <td class="text-capitalize">{{category.name}}</td>
-                      <td>{{category.description}}</td>
+                      <td>{{category.slug}}</td>
                       <td>{{category.created_at}}</td>
                       <td>
 
@@ -83,10 +83,10 @@
                             <has-error :form="form" field="name"></has-error>
                         </div>
                         <div class="form-group">
-                            <label>Description</label>
-                            <input v-model="form.description" type="text" name="description"
-                                class="form-control" :class="{ 'is-invalid': form.errors.has('description') }">
-                            <has-error :form="form" field="description"></has-error>
+                            <label>Slug</label>
+                            <input v-model="form.slug" type="text" name="slug"
+                                class="form-control" :class="{ 'is-invalid': form.errors.has('slug') }">
+                            <has-error :form="form" field="slug"></has-error>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -111,7 +111,7 @@
                 form: new Form({
                     id : '',
                     name: '',
-                    description: '',
+                    slug: '',
                 })
             }
         },
@@ -121,7 +121,7 @@
 
                   this.$Progress.start();
 
-                  axios.get('/api/topbar?page=' + page).then(({ data }) => (this.categories = data.data));
+                  axios.get('/api/topbar?page=' + page).then((data) => (this.categories = data.data));
 
                   this.$Progress.finish();
             },
@@ -159,13 +159,13 @@
 
             loadCategories(){
                 if(this.$gate.isAdmin()){
-                    axios.get("/api/category").then(({ data }) => (this.categories = data.data));
+                    axios.get("/api/topbar").then(( data ) => (this.categories = data.data));
                 }
             },
 
             createCategory(){
 
-                this.form.post('/api/category')
+                this.form.post('/api/topbar')
                 .then((response)=>{
                     $('#addNew').modal('hide');
 
