@@ -51,7 +51,7 @@ class ProductController extends BaseController
             'description' => $request->get('description'),
             'price' => $request->get('price'),
             'category_id' => $request->get('category_id'),
-            'image' => $imagePath,
+            'photo' => $imagePath,
         ]);
 
         // update pivot table
