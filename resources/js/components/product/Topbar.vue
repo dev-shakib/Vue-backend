@@ -121,7 +121,7 @@
 
                   this.$Progress.start();
 
-                  axios.get('/api/category?page=' + page).then(({ data }) => (this.categories = data.data));
+                  axios.get('/api/topbar?page=' + page).then(({ data }) => (this.categories = data.data));
 
                   this.$Progress.finish();
             },
