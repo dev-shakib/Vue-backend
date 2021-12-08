@@ -43,11 +43,15 @@ class ProductController extends BaseController
      */
     public function store(ProductRequest $request)
     {
+        $imageName = time().".jpg";
+        $imagePath = "/images/".$imageName;
+        \Image::make($request->image)->save(public_path($imagePath));
         $product = $this->product->create([
             'name' => $request->get('name'),
             'description' => $request->get('description'),
             'price' => $request->get('price'),
             'category_id' => $request->get('category_id'),
+            'image' => $imagePath,
         ]);
 
         // update pivot table

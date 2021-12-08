@@ -201,9 +201,10 @@
               $('#addNew').modal('show');
           },
           createProduct(){
+
               this.$Progress.start();
 
-              this.form.post('api/product')
+              this.form.post('api/product',)
               .then((data)=>{
                 if(data.data.success){
                   $('#addNew').modal('hide');
@@ -281,10 +282,14 @@
                   })
           },
           handleImage(event){
-              this.form.image = event.target.files[0];
-            //   this.form.image = 'hello';
+            let file = event.target.files[0];
+            let render = new FileReader();
+            render.onloadend = (file) => {
+                console.log(render.result);
+                this.form.image = render.result;
+            }
+            render.readAsDataURL(file)
 
-              console.log(this.form.image);
           }
 
         },
