@@ -44,7 +44,7 @@ class ProductController extends BaseController
     public function store(ProductRequest $request)
     {
         $imageName = time().".jpg";
-        $imagePath = "/images/".$imageName;
+        $imagePath = "images/".$imageName;
         \Image::make($request->image)->save(public_path($imagePath));
         $product = $this->product->create([
             'name' => $request->get('name'),
