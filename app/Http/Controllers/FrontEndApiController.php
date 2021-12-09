@@ -28,9 +28,10 @@ class FrontEndApiController extends Controller
         return response($products);
     }
 
-    public function showProduct($id)
+    public function getSingleProduct($id)
     {
-        $product = Product::where('id', $id)->get();
+        // return true;
+        $product = Product::where('id', $id)->first();
         return response($product);
     }
 }

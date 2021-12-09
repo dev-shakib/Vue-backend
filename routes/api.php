@@ -47,4 +47,4 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
 Route::get('/get-topbar', 'App\Http\Controllers\FrontEndApiController@showTopbarList');
 Route::get('/categories', 'App\Http\Controllers\FrontEndApiController@getCtegories');
 Route::get('/products', 'App\Http\Controllers\FrontEndApiController@getProducts');
-Route::get('/product/{id}', 'App\Http\Controllers\FrontEndApiController@showProduct');
+Route::get('/single-product/{id}', 'App\Http\Controllers\FrontEndApiController@getSingleProduct');
