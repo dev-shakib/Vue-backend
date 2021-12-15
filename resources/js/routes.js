@@ -7,5 +7,7 @@ export default [
     { path: '/product/tag', component: require('./components/product/Tag.vue').default },
     { path: '/product/category', component: require('./components/product/Category.vue').default },
     { path: '/product/topmenu', component: require('./components/product/Topbar.vue').default },
+
+    { path: '/slider', component: require('./components/slider/Slider.vue').default },
     { path: '*', component: require('./components/NotFound.vue').default }
 ];

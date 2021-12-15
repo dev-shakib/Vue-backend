@@ -4,13 +4,13 @@
         <div class="row">
 
           <div class="col-12">
-        
+
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Category List</h3>
 
                 <div class="card-tools">
-                  
+
                   <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addProduct">
                       <i class="fa fa-plus-square"></i>
                       Add New
@@ -105,7 +105,7 @@
               axios.get("api/category").then(({ data }) => (this.categories = data.data));
             // }
           },
-          
+
           createCategory(){
               this.$Progress.start();
 
@@ -132,7 +132,7 @@
 
         },
         mounted() {
-            
+
         },
         created() {
             this.$Progress.start();
