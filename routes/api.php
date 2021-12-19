@@ -39,7 +39,8 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'product' => 'ProductController',
         'category' => 'CategoryController',
         'tag' => 'TagController',
-        'topbar' => 'TopBarController'
+        'topbar' => 'TopBarController',
+        'slider' => 'SliderController'
     ]);
 });
 
