@@ -46,6 +46,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
 
 // Public routes
 Route::get('/get-topbar', 'App\Http\Controllers\FrontEndApiController@showTopbarList');
+Route::get('/get-slider', 'App\Http\Controllers\FrontEndApiController@getSlider');
 Route::get('/categories', 'App\Http\Controllers\FrontEndApiController@getCtegories');
 Route::get('/products', 'App\Http\Controllers\FrontEndApiController@getProducts');
 Route::get('/single-product/{id}', 'App\Http\Controllers\FrontEndApiController@getSingleProduct');

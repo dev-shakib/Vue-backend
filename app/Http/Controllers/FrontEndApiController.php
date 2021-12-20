@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Slider;
 use App\Models\TopBar;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -15,6 +16,12 @@ class FrontEndApiController extends Controller
     {
         $topbar = TopBar::orderBy('id', 'DESC')->get();
         return response($topbar);
+    }
+
+    public function getSlider()
+    {
+        $sliders = Slider::all();
+        return response($sliders);
     }
     public function getCtegories()
     {

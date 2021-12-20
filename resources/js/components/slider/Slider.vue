@@ -5,7 +5,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Category List</h3>
+              <h3 class="card-title">Slider lists</h3>
 
               <div class="card-tools">
                 <!-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addProduct">
@@ -20,7 +20,7 @@
                   data-target="#exampleModal"
                   @click="newModal"
                 >
-                  Launch demo modal
+                  Create slider
                 </button>
               </div>
             </div>
@@ -231,6 +231,7 @@ export default {
       this.form.reset();
       $("#exampleModal").modal("show");
       this.form.fill(slider);
+      
     },
     newModal() {
       this.editmode = false;
