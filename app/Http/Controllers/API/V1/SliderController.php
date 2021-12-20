@@ -89,7 +89,7 @@ class SliderController extends BaseController
     {
         $updateSlide = Slider::find($id);
 
-        if(base64_decode($request->image)){
+        if($request->image){
             // delete old image from storage
             File::delete(public_path($updateSlide->image));
 

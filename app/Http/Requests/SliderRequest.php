@@ -23,10 +23,23 @@ class SliderRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'image' => ['required'],
-            'title' => ['required'],
-            'action' => ['required']
-        ];
+        switch ($this->getMethod()) {
+            case 'POST':
+                return [
+                    'image' => ['required'],
+                    'title' => ['required'],
+                    'action' => ['required']
+                ];
+                break;
+
+            default:
+                return [
+                    'image' => ['sometimes'],
+                    'title' => ['required'],
+                    'action' => ['required']
+                ];
+                break;
+        }
+
     }
 }

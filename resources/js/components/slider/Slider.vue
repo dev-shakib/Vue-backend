@@ -230,8 +230,10 @@ export default {
       this.editmode = true;
       this.form.reset();
       $("#exampleModal").modal("show");
-      this.form.fill(slider);
-      
+      // this.form.fill(slider);
+      this.form.id = slider.id;
+      this.form.title = slider.title;
+      this.form.action = slider.action;
     },
     newModal() {
       this.editmode = false;
